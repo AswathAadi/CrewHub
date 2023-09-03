@@ -11,9 +11,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-
-
-
 // Add DbContext to services
 builder.Services.AddDbContext<Context>(options =>
 {
@@ -24,9 +21,6 @@ builder.Services.AddDbContext<Context>(options =>
 
     options.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22))); // Use Pomelo's MySQL provider
 });
-
-
-
 
 builder.Services.AddSwaggerGen();
 
