@@ -1,5 +1,7 @@
 using CrewHub.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +19,7 @@ builder.Services.AddDbContext<Context>(options =>
         .AddJsonFile("appsettings.json")
         .Build();
 
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+    options.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 22))); // Use Pomelo's MySQL provider
 });
 
 builder.Services.AddSwaggerGen();
