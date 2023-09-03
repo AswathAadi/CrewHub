@@ -1,6 +1,8 @@
-﻿namespace CrewHub.Data.Entities
+﻿using SharedServices.Data;
+
+namespace CrewHub.Data.Entities
 {
-    public class TblTitanEmployee
+    public class TblTitanEmployee : EntityBase<string>
     {
         public string Id { get; set; }
         public string Name { get; set; }
