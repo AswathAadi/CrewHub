@@ -1,6 +1,7 @@
 ﻿using CrewHub.Data.DBContext;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SharedServices.BusinessLayers;
+using SharedServices.BusinessLayers.ILayers;
 
 namespace CrewHub.Controllers
 {
@@ -9,16 +10,19 @@ namespace CrewHub.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly Context _context;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(Context context)
+        public EmployeeController(Context context, IEmployeeService employeeService)
         {
             _context = context;
+            _employeeService = employeeService;
         }
 
         [HttpGet("Employee")]
-        public void Get()
+        public void GetEmployeeDetails()
         {
-            var result = _context.Employee.Count();
         }
+
+
     }
 }
